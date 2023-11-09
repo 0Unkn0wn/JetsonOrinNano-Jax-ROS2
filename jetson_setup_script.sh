@@ -18,7 +18,7 @@ sudo apt-get install -y nvidia-container-toolkit
 echo Installing hstr for bash history
 
 # install missing needed dependencies
-sudo apt install libncursesw5-dev libreadline-dev
+sudo apt install -y libncursesw5-dev libreadline-dev
 
 # hstr
 cd
@@ -35,7 +35,7 @@ hstr --show-configuration >> ~/.bashrc && . ~/.bashrc
 echo Installing tmux
 
 # install missing needed dependencies
-sudo apt install libevent-dev libncurses5-dev
+sudo apt install -y libevent-dev libncurses5-dev
 
 # tmux
 cd ~/code
@@ -67,7 +67,7 @@ sudo -H python3 -m pip install -U jetson-stats
 sudo systemctl status jetson_stats.service
 
 echo Installing nano
-sudo apt install nano
+sudo apt install -y nano
 
 echo Installing neovim
-sudo apt-get install neovim
+sudo apt-get install -y neovim
