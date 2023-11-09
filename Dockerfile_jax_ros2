@@ -1,0 +1,32 @@
+
+ARG VERSION=r35.4.1
+#FROM nvcr.io/nvidia/l4t-jetpack:${VERSION}
+FROM dustynv/ros:humble-desktop-l4t-${VERSION}
+
+RUN apt-get update && apt-get install -y nano git software-properties-common texlive-xetex texlive-fonts-recommended texlive-plain-generic
+
+RUN echo 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n\
+export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH \n'>> ~/.bashrc
+
+RUN add-apt-repository ppa:deadsnakes/ppa 
+RUN apt-get update
+RUN apt-get install -y python3.9 python3.9-dev python3-pip
+RUN pip3 install virtualenv
+RUN virtualenv -p /usr/bin/python3.9 py39
+
+RUN mkdir Downloads/
+RUN cd Downloads/
+RUN wget https://github.com/0Unkn0wn/jetson-orin-jax-0.4.16/releases/download/v0.4.7/jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
+RUN git clone https://github.com/google/jax.git --branch jaxlib-v0.4.7 --single-branch --depth=1
+
+RUN /bin/bash -c "source py39/bin/activate \
+	&& pip3 install jupyter lab matplotlib ipython \
+	&& ipython kernel install --user --name=py39venv \
+	&& pip3 install jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl \ 
+	&& cd jax/ \
+	&& pip3 install . \
+	&& cd .. \
+	&& jupyter lab --generate-config \
+	&& rm -rf jax/"
+
+RUN rm jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
