@@ -17,6 +17,8 @@ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dear
 
 sudo apt-get install -y nvidia-container-toolkit
 
+sudo apt --fix-broken install -y
+
 echo Installing hstr for bash history
 
 # install missing needed dependencies
