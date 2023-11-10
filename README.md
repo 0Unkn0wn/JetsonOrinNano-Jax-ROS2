@@ -14,8 +14,8 @@ This repo contains:
 To run any of the scripts run them with: `sudo chmod +x name_of_the_script.sh; ./name_of_the_script.sh`
 
 The scripts should be run in this order:
-After a clean install and a `sudo apt update` and `sudo apt upgrade` run the `jetson_setup_script.sh` script.
-Then choose which Jax/CUDA combo suits you best and run the appropriate script. For CUDA 11.4 run the `docker_jax_ros2_build.sh` script and for CUDA 12.2 run the `docker_jax_ros2_cuda12_build.sh` script.
-To run the container run the `run_docker.sh` script or the `run_docker_cuda12.sh` script based on the previous choice. This will start the appropriate container.
-Once inside the container start the python env with `. py39/bin/activate` and run the `jupyter_run.sh` script.
-Open your browser and go to `http://localhost:8888/lab?`. Open the jax_performance notebook and try it out.
+1. After a clean install and a `sudo apt update` and `sudo apt upgrade` run the `jetson_setup_script.sh` script.
+2. Then choose which Jax/CUDA combo suits you best and run the appropriate script. For CUDA 11.4 run the `docker_jax_ros2_build.sh` script and for CUDA 12.2 run the `docker_jax_ros2_cuda12_build.sh` script.
+3. To run the container run the `run_docker.sh` script or the `run_docker_cuda12.sh` script based on the previous choice. This will start the appropriate container.
+4. Once inside the container start the python env with `. py39/bin/activate` and run the `jupyter_run.sh` script.
+5. Open your browser and go to `http://localhost:8888/lab?`. Open the jax_performance notebook and try it out.
