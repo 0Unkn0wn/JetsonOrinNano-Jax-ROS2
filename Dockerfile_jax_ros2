@@ -16,7 +16,7 @@ RUN virtualenv -p /usr/bin/python3.9 py39
 
 RUN mkdir Downloads/
 RUN cd Downloads/
-RUN wget https://github.com/0Unkn0wn/jetson-orin-jax-0.4.16/releases/download/v0.4.7/jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
+RUN wget https://github.com/0Unkn0wn/JetsonOrinNano-Jax-ROS2/releases/download/v0.4.7/jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
 RUN git clone https://github.com/google/jax.git --branch jaxlib-v0.4.7 --single-branch --depth=1
 
 RUN /bin/bash -c "source py39/bin/activate \
