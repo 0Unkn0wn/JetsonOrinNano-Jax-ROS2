@@ -30,3 +30,6 @@ RUN /bin/bash -c "source py39/bin/activate \
 	&& rm -rf jax/"
 
 RUN rm jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
+
+COPY jupyter_run.sh /
+COPY jax_performance.ipynb /
