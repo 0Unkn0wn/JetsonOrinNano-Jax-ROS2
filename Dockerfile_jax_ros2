@@ -3,22 +3,27 @@ ARG VERSION=r35.4.1
 #FROM nvcr.io/nvidia/l4t-jetpack:${VERSION}
 FROM dustynv/ros:humble-desktop-l4t-${VERSION}
 
+# installing the required software
 RUN apt-get update && apt-get install -y nano git software-properties-common texlive-xetex texlive-fonts-recommended texlive-plain-generic
 
+# adding missing cuda path in .bashrc
 RUN echo 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n\
 export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH \n'>> ~/.bashrc
 
+# configuring the python 3.9 virtualenv 
 RUN add-apt-repository ppa:deadsnakes/ppa 
 RUN apt-get update
 RUN apt-get install -y python3.9 python3.9-dev python3-pip
 RUN pip3 install virtualenv
 RUN virtualenv -p /usr/bin/python3.9 py39
 
+# getting install files for jax
 RUN mkdir Downloads/
 RUN cd Downloads/
 RUN wget https://github.com/0Unkn0wn/JetsonOrinNano-Jax-ROS2/releases/download/v0.4.7/jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
 RUN git clone https://github.com/google/jax.git --branch jaxlib-v0.4.7 --single-branch --depth=1
 
+# installing jax
 RUN /bin/bash -c "source py39/bin/activate \
 	&& pip3 install jupyter lab matplotlib ipython \
 	&& ipython kernel install --user --name=py39venv \
@@ -33,3 +38,26 @@ RUN rm jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
 
 COPY jupyter_run.sh /
 COPY jax_performance.ipynb /
+
+# installing ros2 sample repo
+RUN /bin/bash -c ". py39/bin/activate \
+        && . /opt/ros/humble/install/setup.bash \
+        && pip3 install empy catkin_pkg lark \
+        && mkdir -p ~/ros2_ws/src \
+        && cd ~/ros2_ws/src \
+        && git clone https://github.com/ros/ros_tutorials.git -b humble \
+        && cd .. \
+        && rosdep install -i --from-path src --rosdistro humble -y \
+        && colcon build --packages-up-to --symlink-install --event-handlers console_direct+"
+
+
+# installing ros2 xsens_mti driver
+RUN /bin/bash -c ". py39/bin/activate \
+        && . /opt/ros/humble/install/setup.bash \
+        && pip3 install empy catkin_pkg lark \
+        && mkdir -p ~/xsens_ws/src \
+        && cd ~/xsens_ws/src \
+        && git clone https://github.com/0Unkn0wn/ros2_xsens_mti_driver.git\
+        && cd .. \
+        && colcon build --packages-up-to --symlink-install --event-handlers console_direct+ \
+        && source install/setup.sh"
