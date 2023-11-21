@@ -74,3 +74,8 @@ sudo apt install -y nano
 
 echo Installing neovim
 sudo apt-get install -y neovim
+
+#set x11 setting to allow gui apps through ssh connection
+sudo sed -i 's/^ *# *X11Forwarding [^ ]*/X11Forwarding yes/' /etc/ssh/sshd_config
+sudo sed -i 's/^ *# *X11DisplayOffset[^ ]*/X11DisplayOffset/' /etc/ssh/sshd_config
+sudo sed -i 's/^ *# *X11UseLocalhost [^ ]*/X11UseLocalhost no/' /etc/ssh/sshd_config
