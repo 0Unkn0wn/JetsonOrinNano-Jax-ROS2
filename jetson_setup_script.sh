@@ -68,7 +68,6 @@ set-environment -g -u PROMPT_COMMAND \n' >> ~/.tmux.conf
 echo Installing jtop or jetson-stats
 sudo apt-get install python3-pip
 sudo pip3 install -U jetson-stats
-sudo systemctl status jetson_stats.service
 
 echo Installing nano
 sudo apt install -y nano
