@@ -22,4 +22,8 @@ The scripts should be run in this order:
 5. Once inside the container start the python env with `. py39/bin/activate` and run the `jupyter_run.sh` script.
 6. Open your browser and go to `http://localhost:8888/lab?`. Open the jax_performance notebook and try it out.
 
-For any issues with X11 please refer to: https://unix.stackexchange.com/a/317083.
+For any issues with X11 please refer to: 
+
+https://unix.stackexchange.com/a/317083. 
+
+https://medium.com/geekculture/run-a-gui-software-inside-a-docker-container-dce61771f9  
