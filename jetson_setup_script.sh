@@ -1,10 +1,11 @@
+#!/bin/bash
 ### The start of the script
 
 ## Inspired by https://github.com/pokusew/ros-setup/tree/main/nvidia-jetson-tx2
 
-echo Starting the installation process
+echo $'\nStarting the installation process'
 
-echo Installing docker
+echo $'\nInstalling docker'
 
 sudo apt-get install -y curl
 
@@ -19,7 +20,7 @@ sudo apt-get install -y nvidia-container-toolkit
 
 sudo apt --fix-broken install -y
 
-echo Installing hstr for bash history
+echo $'\nInstalling hstr for bash history'
 
 # install missing needed dependencies
 sudo apt install -y libncursesw5-dev libreadline-dev
@@ -36,7 +37,7 @@ sudo make install
 cd
 hstr --show-configuration >> ~/.bashrc && . ~/.bashrc
 
-echo Installing tmux
+echo $'\nInstalling tmux'
 
 # install missing needed dependencies
 sudo apt install -y libevent-dev libncurses5-dev
@@ -49,7 +50,7 @@ sh autogen.sh
 ./configure && make
 sudo make install
 
-echo Creating tmux config
+echo $'\nCreating tmux config'
 sudo touch ~/.tmux.conf
 echo '# change terminal identification (will get propagated to $TERM) to allow RGB colors inside tmux \n\
 # see https://github.com/tmux/tmux/wiki/FAQ#how-do-i-use-a-256-colour-terminal \n\
@@ -65,14 +66,14 @@ set -g mouse \n\
 #   in addition, each session has a session environment. \n\
 set-environment -g -u PROMPT_COMMAND \n' >> ~/.tmux.conf 
 
-echo Installing jtop or jetson-stats
+echo $'\nInstalling jtop --- jetson-stats'
 sudo apt-get install python3-pip
 sudo pip3 install -U jetson-stats
 
-echo Installing nano
+echo $'\nInstalling nano'
 sudo apt install -y nano
 
-echo Installing neovim
+echo $'\nInstalling neovim'
 sudo apt-get install -y neovim
 
 #set x11 setting to allow gui apps through ssh connection
