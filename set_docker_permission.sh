@@ -1,5 +1,6 @@
+#!/bin/bash
 ### Script to set docker permission to run as no root
-echo Setting the docker permissions
+echo $'\nSetting the docker permissions'
 
 sudo groupadd -f docker
 
