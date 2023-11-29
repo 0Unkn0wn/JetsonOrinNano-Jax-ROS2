@@ -1,5 +1,6 @@
-### Building docker
 #!/bin/bash
+### Building docker
+
 echo $'\nBuilding the jax-ros2 docker image'
 
 docker pull dustynv/ros:humble-desktop-l4t-r35.4.1
