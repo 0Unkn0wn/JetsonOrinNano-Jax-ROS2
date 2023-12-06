@@ -65,15 +65,15 @@ COPY jupyter_run.sh /
 COPY jax_performance.ipynb /
 
 # installing ros2 sample repo
-RUN /bin/bash -c ". py39/bin/activate \
-        && . /opt/ros/humble/install/setup.bash \
-        && pip3 install empy catkin_pkg lark \
-        && mkdir -p ~/ros2_ws/src \
-        && cd ~/ros2_ws/src \
-        && git clone https://github.com/ros/ros_tutorials.git -b humble \
-        && cd .. \
-        && rosdep install -i --from-path src --rosdistro humble -y \
-        && colcon build --packages-up-to --symlink-install --event-handlers console_direct+"
+# RUN /bin/bash -c ". py39/bin/activate \
+#         && . /opt/ros/humble/install/setup.bash \
+#         && pip3 install empy catkin_pkg lark \
+#         && mkdir -p ~/ros2_ws/src \
+#         && cd ~/ros2_ws/src \
+#         && git clone https://github.com/ros/ros_tutorials.git -b humble \
+#         && cd .. \
+#         && rosdep install -i --from-path src --rosdistro humble -y \
+#         && colcon build --packages-up-to --symlink-install --event-handlers console_direct+"
 
 
 # installing ros2 xsens_mti driver
