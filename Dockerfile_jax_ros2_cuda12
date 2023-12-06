@@ -87,3 +87,4 @@ RUN /bin/bash -c ". py39/bin/activate \
         && colcon build --packages-up-to --symlink-install --event-handlers console_direct+ \
         && source install/setup.sh"
 
+RUN echo '. py39/bin/activate\n' >> .bashrc
