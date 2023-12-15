@@ -7,7 +7,7 @@ FROM dustynv/ros:humble-desktop-l4t-${VERSION}
 RUN apt-get update && apt-get install -y nano git software-properties-common texlive-xetex texlive-fonts-recommended texlive-plain-generic
 
 # adding missing cuda path in .bashrc
-RUN echo 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n\
+RUN echo -e 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n
 export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH \n'>> ~/.bashrc
 
 # configuring the python 3.9 virtualenv 
