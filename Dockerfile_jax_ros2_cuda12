@@ -34,9 +34,9 @@ RUN apt-get update && \
 # adding missing cuda path in .bashrc
 # auto source the py39 virtual env
 # and setting the ros domain id to 41 to match the dingo setting
-RUN echo 'export PATH=/usr/local/cuda/bin:$PATH \n\
-export LD_LIBRARY_PATH=/usr/local/cuda/compat:/usr/local/cuda/lib64:${LD_LIBRARY_PATH} \n\
-. py39/bin/activate \n\
+RUN echo -e 'export PATH=/usr/local/cuda/bin:$PATH \n
+export LD_LIBRARY_PATH=/usr/local/cuda/compat:/usr/local/cuda/lib64:${LD_LIBRARY_PATH} \n
+. py39/bin/activate \n
 export ROS_DOMAIN_ID=41 \n'>> ~/.bashrc
 
 # configuring the python 3.9 virtualenv 
