@@ -34,7 +34,8 @@ RUN apt-get update && \
 # adding missing cuda path in .bashrc
 # auto source the py39 virtual env
 # and setting the ros domain id to 41 to match the dingo setting
-RUN printf 'export PATH=/usr/local/cuda/bin:$PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda/compat:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}\n. py39/bin/activate\nexport ROS_DOMAIN_ID=41 \n'>> ~/.bashrc
+# adding master uri and ros ip for ethernet connection
+RUN printf 'export PATH=/usr/local/cuda/bin:$PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda/compat:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}\n. py39/bin/activate\n export ROS_DOMAIN_ID=41 \n export ROS_IP=10.42.0.157\n export ROS_MASTER_URI=http://192.168.0.105:11311\n'>> ~/.bashrc
 
 # configuring the python 3.9 virtualenv 
 RUN add-apt-repository ppa:deadsnakes/ppa
@@ -87,3 +88,5 @@ RUN /bin/bash -c ". py39/bin/activate \
         && cd .. \
         && colcon build --packages-up-to --symlink-install --event-handlers console_direct+ \
         && source install/setup.sh"
+
+RUN apt-get install -y iputils-ping
