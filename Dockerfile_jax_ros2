@@ -7,11 +7,11 @@ FROM dustynv/ros:humble-desktop-l4t-${VERSION}
 RUN apt-get update && apt-get install -y nano git software-properties-common texlive-xetex texlive-fonts-recommended texlive-plain-generic
 
 # adding missing cuda path in .bashrc
-RUN echo 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n\
+RUN echo -e 'export PATH=/usr/local/cuda-11.4/bin:$PATH \n
 export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH \n'>> ~/.bashrc
 
 # configuring the python 3.9 virtualenv 
-RUN add-apt-repository ppa:deadsnakes/ppa 
+RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update
 RUN apt-get install -y python3.9 python3.9-dev python3-pip
 RUN pip3 install virtualenv
@@ -25,14 +25,14 @@ RUN git clone https://github.com/google/jax.git --branch jaxlib-v0.4.7 --single-
 
 # installing jax
 RUN /bin/bash -c "source py39/bin/activate \
-	&& pip3 install jupyter lab matplotlib ipython \
-	&& ipython kernel install --user --name=py39venv \
-	&& pip3 install jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl \ 
-	&& cd jax/ \
-	&& pip3 install . \
-	&& cd .. \
-	&& jupyter lab --generate-config \
-	&& rm -rf jax/"
+        && pip3 install jupyter lab matplotlib ipython \
+        && ipython kernel install --user --name=py39venv \
+        && pip3 install jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl \
+        && cd jax/ \
+        && pip3 install . \
+        && cd .. \
+        && jupyter lab --generate-config \
+        && rm -rf jax/"
 
 RUN rm jaxlib-0.4.7-cp39-cp39-manylinux2014_aarch64.whl
 
@@ -61,3 +61,4 @@ RUN /bin/bash -c ". py39/bin/activate \
         && cd .. \
         && colcon build --packages-up-to --symlink-install --event-handlers console_direct+ \
         && source install/setup.sh"
+                                    
