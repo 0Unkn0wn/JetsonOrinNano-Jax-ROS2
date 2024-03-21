@@ -46,7 +46,15 @@ jobs:
             matplotlib
             scikit-learn
             numpy
-          
+
+      - name: Install CUDA
+        uses: Jimver/cuda-toolkit@v0.2.14
+        id: cuda-toolkit
+        with:
+          cuda: '12.4.0'
+
+      - run: nvcc -V
+        
       - name: Start building
         run: |
           cd jax
