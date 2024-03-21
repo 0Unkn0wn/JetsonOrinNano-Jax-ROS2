@@ -30,19 +30,16 @@ jobs:
           # Repository name
           repository: jax
           
-      - name: cd jax
-        run: |
-          cd jax
-          
       - name: Python Dependency Installation
         # You may pin to the exact commit or the version.
         # uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
         uses: py-actions/py-dependency-install@v4
         with:
           # Path to requirements.txt file
-          path: docs/requirements.txt
+          path: jax/docs/requirements.txt
           
       - name: Start building
         run: |
+          cd jax
           ls -la
           python3 build/build.py --enable_cuda --cuda_compute_capabilities=sm_87 --cuda_version=12.4 --cudnn_version=8.9.4 --target_cpu=aarch64
