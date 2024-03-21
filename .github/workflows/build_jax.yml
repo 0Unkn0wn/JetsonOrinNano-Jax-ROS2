@@ -31,12 +31,10 @@ jobs:
           repository: jax
           
       - name: Python Dependency Installation
-        # You may pin to the exact commit or the version.
-        # uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
-        uses: brettcannon/pip-secure-install@v1.0.0
+        uses: insightsengineering/pip-action@v2.0.1
         with:
           # Path to requirements.txt file
-          requirements-file: jax/docs/requirements.txt
+          requirements: jax/docs/requirements.txt
           
       - name: Start building
         run: |
