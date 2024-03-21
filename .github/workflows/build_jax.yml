@@ -36,7 +36,7 @@ jobs:
         uses: brettcannon/pip-secure-install@v1.0.0
         with:
           # Path to requirements.txt file
-          path: jax/docs/requirements.txt
+          requirements-file: jax/docs/requirements.txt
           
       - name: Start building
         run: |
