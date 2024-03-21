@@ -32,7 +32,7 @@ jobs:
           
       - name: cd jax
         run: |
-          cd jax.
+          cd jax
           
       - name: Python Dependency Installation
         # You may pin to the exact commit or the version.
