@@ -35,6 +35,7 @@ jobs:
         with:
           # Path to requirements.txt file
           packages: |
+            wheel
             absl-py
             ipython
             sphinx
