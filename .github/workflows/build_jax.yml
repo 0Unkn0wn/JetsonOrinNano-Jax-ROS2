@@ -34,7 +34,22 @@ jobs:
         uses: insightsengineering/pip-action@v2.0.1
         with:
           # Path to requirements.txt file
-          packages: absl-py,ipython,sphinx,sphinx-autodoc-typehints,sphinx-book-them,sphinx-copybutton,sphinx-remove-toctrees,sphinx-design,myst-nb,flatbuffers,pytest,pytest-xdist,matplotlib,scikit-learn,numpy
+          packages: |
+            absl-py
+            ipython
+            sphinx
+            sphinx-autodoc-typehints
+            sphinx-book-them
+            sphinx-copybutton
+            sphinx-remove-toctrees
+            sphinx-design
+            myst-nb
+            flatbuffers
+            pytest
+            pytest-xdist
+            matplotlib
+            scikit-learn
+            numpy
           
       - name: Start building
         run: |
