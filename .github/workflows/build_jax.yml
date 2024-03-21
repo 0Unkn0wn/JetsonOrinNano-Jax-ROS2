@@ -38,11 +38,6 @@ jobs:
             absl-py
             ipython
             sphinx
-            sphinx-autodoc-typehints
-            sphinx-book-them
-            sphinx-copybutton
-            sphinx-remove-toctrees
-            sphinx-design
             myst-nb
             flatbuffers
             pytest
